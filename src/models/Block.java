@@ -1,8 +1,9 @@
 package models;
 import interfaces.IBlock;
+import interfaces.IBlockData;
 import interfaces.ITimestampedData;
 
-public class Block<T> implements IBlock{
+public class Block<T> implements IBlockData<T>{
 
 	private String previousHash;
 	private String hash;
@@ -53,15 +54,18 @@ public class Block<T> implements IBlock{
 		return "Block [previousHash=" + previousHash + ", hash=" + hash + ", stampedData=" + stampedData + "]";
 	}
 	
+	@Override
 	public T data()
 	{
 		return this.getStampedData().hashedData().data();
 	}
 
+	@Override
 	public long timestamp() {
 		return this.getStampedData().timestamp();
 	}
 	
+	@Override
 	public String dataHash() {
 		return this.getStampedData().hashedData().hashAsString();
 	}

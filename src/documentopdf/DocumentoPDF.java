@@ -14,6 +14,7 @@ public class DocumentoPDF implements IHasheableData, IDocumentoPDF {
 		this.setPathDocumento(pathDocumento);
 	}
 
+	@Override
 	public String getPathDocumento() {
 		return pathDocumento;
 	}

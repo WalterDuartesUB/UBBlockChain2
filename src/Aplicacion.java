@@ -6,7 +6,7 @@ import org.json.simple.parser.ParseException;
 import blockchain.BlockChain;
 import blockchain.IBlockChain;
 import cipher.BidiriectionalCipherAES;
-import documentopdf.DocumentoPDF;
+import documentopdf.DocumentoPDFHasheable;
 import documentopdf.DocumentoPDFFactory;
 import hashgenerator.HashGeneratorMD5;
 import interfaces.IBlockData;
@@ -22,7 +22,7 @@ public class Aplicacion {
 
 	public void ejecutar() throws ParseException {
 		// Creo una blockChain con los parametros que quiero
-		IBlockChain<DocumentoPDF> blockChain = crearBlockChain();
+		IBlockChain<DocumentoPDFHasheable> blockChain = crearBlockChain();
 
 		// Agrego unos bloques a la cadena
 		agregarBloques(blockChain);
@@ -31,34 +31,34 @@ public class Aplicacion {
 		mostrarBloques(blockChain);
 	}
 
-	private IBlockChain<DocumentoPDF> crearBlockChain() {
-		BlockChain<DocumentoPDF> blockChain = new BlockChain<DocumentoPDF>(new DocumentoPDFFactory());
+	private IBlockChain<DocumentoPDFHasheable> crearBlockChain() {
+		BlockChain<DocumentoPDFHasheable> blockChain = new BlockChain<DocumentoPDFHasheable>(new DocumentoPDFFactory());
 
-		blockChain.setGeneradorHash(new HashGeneratorMD5<DocumentoPDF>());
-		blockChain.setTimestampingProvider(new TimestampProviderURL<DocumentoPDF>());
+		blockChain.setGeneradorHash(new HashGeneratorMD5<DocumentoPDFHasheable>());
+		blockChain.setTimestampingProvider(new TimestampProviderURL<DocumentoPDFHasheable>());
 		blockChain.setDataCipher(new BidiriectionalCipherAES());
 
 		return blockChain;
 	}
 
-	private void mostrarBloques(IBlockChain<DocumentoPDF> blockChain) throws ParseException {
+	private void mostrarBloques(IBlockChain<DocumentoPDFHasheable> blockChain) throws ParseException {
 
-		Collection<IBlockData<DocumentoPDF>> bloques = new LinkedList<IBlockData<DocumentoPDF>>();
+		Collection<IBlockData<DocumentoPDFHasheable>> bloques = new LinkedList<IBlockData<DocumentoPDFHasheable>>();
 
 		// Pido todos los bloques a la blockchain
 		blockChain.getAll(bloques);
 
 		// Imprimo los que traje de la blockchain
-		for (IBlockData<DocumentoPDF> bloque : bloques)
+		for (IBlockData<DocumentoPDFHasheable> bloque : bloques)
 			mostrarBloque(bloque);
 	}
 
-	private void agregarBloques(IBlockChain<DocumentoPDF> blockChain) {
-		blockChain.add(new DocumentoPDF("C:/resumen.pdf"));
-		blockChain.add(new DocumentoPDF("C:/salida.rtf"));
+	private void agregarBloques(IBlockChain<DocumentoPDFHasheable> blockChain) {
+		blockChain.add(new DocumentoPDFHasheable("C:/resumen.pdf"));
+		blockChain.add(new DocumentoPDFHasheable("C:/salida.rtf"));
 	}
 
-	private void mostrarBloque(IBlockData<DocumentoPDF> bloque) {
+	private void mostrarBloque(IBlockData<DocumentoPDFHasheable> bloque) {
 		System.out.print(bloque.previousHash());
 		System.out.print(", ");
 		System.out.print(bloque.blockHash());

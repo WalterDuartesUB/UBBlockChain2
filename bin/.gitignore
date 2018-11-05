@@ -1,0 +1,10 @@
+/blockchain/
+/cipher/
+/documentopdf/
+/exceptions/
+/factories/
+/hashgenerator/
+/interfaces/
+/models/
+/repositories/
+/tsproviders/

@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 
 import interfaces.IHasheableData;
 
-public class DocumentoPDF implements IHasheableData {
+public class DocumentoPDF implements IHasheableData, IDocumentoPDF {
 
 	private String pathDocumento;
 

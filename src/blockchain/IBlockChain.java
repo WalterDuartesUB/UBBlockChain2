@@ -1,10 +1,10 @@
 package blockchain;
 import java.util.Collection;
 
-import models.Block;
+import interfaces.IBlockData;
 
 public interface IBlockChain<T> {
 	public void add(T data);
-	public void getAll(Collection<Block<T>> bloques);
+	public void getAll(Collection<IBlockData<T>> bloques);
 
 }

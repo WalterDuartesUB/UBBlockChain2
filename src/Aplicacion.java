@@ -9,7 +9,7 @@ import cipher.BidiriectionalCipherAES;
 import documentopdf.DocumentoPDF;
 import documentopdf.DocumentoPDFFactory;
 import hashgenerator.HashGeneratorMD5;
-import models.Block;
+import interfaces.IBlockData;
 import tsproviders.TimestampProviderURL;
 
 public class Aplicacion {
@@ -43,13 +43,13 @@ public class Aplicacion {
 
 	private void mostrarBloques(IBlockChain<DocumentoPDF> blockChain) throws ParseException {
 
-		Collection<Block<DocumentoPDF>> bloques = new LinkedList<Block<DocumentoPDF>>();
+		Collection<IBlockData<DocumentoPDF>> bloques = new LinkedList<IBlockData<DocumentoPDF>>();
 
 		// Pido todos los bloques a la blockchain
 		blockChain.getAll(bloques);
 
 		// Imprimo los que traje de la blockchain
-		for (Block<DocumentoPDF> bloque : bloques)
+		for (IBlockData<DocumentoPDF> bloque : bloques)
 			mostrarBloque(bloque);
 	}
 
@@ -58,7 +58,7 @@ public class Aplicacion {
 		blockChain.add(new DocumentoPDF("C:/salida.rtf"));
 	}
 
-	private void mostrarBloque(Block<DocumentoPDF> bloque) {
+	private void mostrarBloque(IBlockData<DocumentoPDF> bloque) {
 		System.out.print(bloque.previousHash());
 		System.out.print(", ");
 		System.out.print(bloque.blockHash());

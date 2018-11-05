@@ -8,7 +8,7 @@ import org.json.simple.parser.ParseException;
 
 import factories.BlockFactory;
 import interfaces.IBlock;
-import models.Block;
+import interfaces.IBlockData;
 
 public class BlockRepository<T extends IBlock>{
 	private Collection<T>	bloques;
@@ -23,7 +23,7 @@ public class BlockRepository<T extends IBlock>{
 		this.getBloques().add( dato );
 	}
 		
-	public <T2> void getAll( Collection<Block<T2>> bloques, BlockFactory<T2> factory ) throws ParseException
+	public <T2> void getAll( Collection<IBlockData<T2>> bloques, BlockFactory<T2> factory ) throws ParseException
 	{		
 		for( T block : this.getBloques())
 			bloques.add( factory.createFromBlock(block) );

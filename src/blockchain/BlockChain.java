@@ -9,10 +9,10 @@ import factories.HashedDataFactory;
 import factories.StampedDataFactory;
 import hashgenerator.IHashGenerator;
 import interfaces.IBlock;
+import interfaces.IBlockData;
 import interfaces.IDataFactory;
 import interfaces.IHashedData;
 import interfaces.ITimestampedData;
-import models.Block;
 import repositories.BlockRepository;
 import tsproviders.ITimestampProvider;
 
@@ -61,7 +61,7 @@ public class BlockChain<T> implements IBlockChain<T> {
 	}
 
 	@Override
-	public void getAll(Collection<Block<T>> bloques){
+	public void getAll(Collection<IBlockData<T>> bloques){
 		try {
 			this.getRepositorio().getAll(bloques, this.getBlockFactory());
 		} catch (ParseException e) {		

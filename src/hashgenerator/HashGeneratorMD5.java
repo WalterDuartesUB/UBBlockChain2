@@ -28,7 +28,7 @@ public class HashGeneratorMD5<T extends IHasheableData> implements IHashGenerato
 	@Override
 	public void validate(String hash) {
 		// TODO validar que el hash sea un hexadecimal
-		// No hay forma de validar contra el contenido, porque el contenido no existe en el bloque
+		// No hay forma de validar contra el contenido, porque el contenido no existe en el bloquegit
 	}
 
 /*	

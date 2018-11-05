@@ -4,6 +4,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import cipher.IBidirectionalCipher;
+import hashgenerator.IHashGenerator;
 import interfaces.IBlock;
 import interfaces.IBlockFactory;
 import interfaces.IStampedDataFactory;
@@ -54,6 +55,11 @@ public class BlockFactory<T> implements IBlockFactory<Block<T>>{
 
 	public void setDataCipher(IBidirectionalCipher dataCipher) {
 		this.dataCipher = dataCipher;
+	}
+
+	public void setGeneradorHash(IHashGenerator<T> generadorHash) {
+		this.getFactory().setGeneradorHash( generadorHash );
+		
 	}
 	
 }

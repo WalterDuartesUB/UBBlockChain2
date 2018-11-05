@@ -1,6 +1,7 @@
 package factories;
 import org.json.simple.JSONObject;
 
+import hashgenerator.IHashGenerator;
 import interfaces.IHashedDataFactory;
 import interfaces.IStampedDataFactory;
 import interfaces.ITimestampedData;
@@ -31,6 +32,12 @@ public class StampedDataFactory<T> implements IStampedDataFactory<T>{
 
 	public void setFactory(IHashedDataFactory<T> factory) {
 		this.factory = factory;
+	}
+
+	@Override
+	public void setGeneradorHash(IHashGenerator<T> generadorHash) {
+		this.getFactory().setHashGenerator( generadorHash );
+		
 	}
 
 }

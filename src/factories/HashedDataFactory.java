@@ -1,6 +1,7 @@
 package factories;
 import org.json.simple.JSONObject;
 
+import hashgenerator.IHashGenerator;
 import interfaces.IDataFactory;
 import interfaces.IHashedData;
 import interfaces.IHashedDataFactory;
@@ -9,6 +10,7 @@ import models.HashedData;
 public class HashedDataFactory<T> implements IHashedDataFactory<T>{
 	
 	private IDataFactory<T> factory;
+	private IHashGenerator<T> hashGenerator;
 	
 	public HashedDataFactory( IDataFactory<T> factory )
 	{
@@ -16,6 +18,9 @@ public class HashedDataFactory<T> implements IHashedDataFactory<T>{
 	}
 
 	public IHashedData<T> createHashedData(JSONObject jsonObject) {
+		
+		this.getHashGenerator().validate( jsonObject.get("hash").toString() );
+		
 		return new HashedData<T>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );
 	}
 
@@ -33,6 +38,14 @@ public class HashedDataFactory<T> implements IHashedDataFactory<T>{
 
 	public void setFactory(IDataFactory<T> factory) {
 		this.factory = factory;
+	}
+
+	public IHashGenerator<T> getHashGenerator() {
+		return hashGenerator;
+	}
+
+	public void setHashGenerator(IHashGenerator<T> hashGenerator) {
+		this.hashGenerator = hashGenerator;
 	}
 
 }

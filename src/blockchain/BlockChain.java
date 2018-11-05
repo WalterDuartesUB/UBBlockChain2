@@ -75,6 +75,8 @@ public class BlockChain<T> implements IBlockChain<T> {
 
 	public void setGeneradorHash(IHashGenerator<T> generadorHash) {
 		this.generadorHash = generadorHash;
+		
+		this.getBlockFactory().setGeneradorHash(generadorHash);
 	}
 
 	public ITimestampProvider<T> getTimestampingProvider() {

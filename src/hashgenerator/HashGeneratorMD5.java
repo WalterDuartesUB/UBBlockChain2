@@ -25,6 +25,11 @@ public class HashGeneratorMD5<T extends IHasheableData> implements IHashGenerato
 		return null;
 	}
 
+	@Override
+	public void validate(String hash) {
+		
+	}
+
 /*	
 	@Override
 	public IHashedData<DocumentoPDF> hash(DocumentoPDF data) {		

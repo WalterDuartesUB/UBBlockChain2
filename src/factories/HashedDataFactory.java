@@ -17,8 +17,7 @@ public class HashedDataFactory<T> implements IHashedDataFactory<T>{
 		this.setFactory(factory);
 	}
 
-	public IHashedData<T> createHashedData(JSONObject jsonObject) {
-		
+	public IHashedData<T> createHashedData(JSONObject jsonObject) {		
 		this.getHashGenerator().validate( jsonObject.get("hash").toString() );
 		
 		return new HashedData<T>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );

@@ -2,7 +2,7 @@ package models;
 import interfaces.IBlock;
 import interfaces.ITimestampedData;
 
-public class Block<T> implements IBlock {
+public class Block<T> implements IBlock{
 
 	private String previousHash;
 	private String hash;
@@ -32,7 +32,7 @@ public class Block<T> implements IBlock {
 		this.previousHash = previousHash;
 	}
 
-	public ITimestampedData<T> getStampedData() {
+	private ITimestampedData<T> getStampedData() {
 		return stampedData;
 	}
 
@@ -52,5 +52,17 @@ public class Block<T> implements IBlock {
 	public String toString() {
 		return "Block [previousHash=" + previousHash + ", hash=" + hash + ", stampedData=" + stampedData + "]";
 	}
+	
+	public T data()
+	{
+		return this.getStampedData().hashedData().data();
+	}
 
+	public long timestamp() {
+		return this.getStampedData().timestamp();
+	}
+	
+	public String dataHash() {
+		return this.getStampedData().hashedData().hashAsString();
+	}
 }

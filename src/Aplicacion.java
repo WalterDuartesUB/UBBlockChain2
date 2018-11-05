@@ -63,10 +63,10 @@ public class Aplicacion {
 		System.out.print(", ");
 		System.out.print(bloque.blockHash());
 		System.out.print(", ");
-		System.out.print(bloque.getStampedData().timestamp());
+		System.out.print(bloque.timestamp());
 		System.out.print(", ");
-		System.out.print(bloque.getStampedData().hashedData().hashAsString());
+		System.out.print(bloque.dataHash());
 		System.out.print(", ");
-		System.out.println(bloque.getStampedData().hashedData().data().getPathDocumento());
+		System.out.println(bloque.data().getPathDocumento());
 	}
 }

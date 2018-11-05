@@ -7,6 +7,7 @@ import blockchain.BlockChain;
 import blockchain.IBlockChain;
 import cipher.BidiriectionalCipherAES;
 import documentopdf.DocumentoPDFHasheable;
+import documentopdf.IDocumentoPDF;
 import documentopdf.DocumentoPDFFactory;
 import hashgenerator.HashGeneratorMD5;
 import interfaces.IBlockData;
@@ -22,7 +23,7 @@ public class Aplicacion {
 
 	public void ejecutar() throws ParseException {
 		// Creo una blockChain con los parametros que quiero
-		IBlockChain<DocumentoPDFHasheable> blockChain = crearBlockChain();
+		IBlockChain<DocumentoPDFHasheable, IDocumentoPDF> blockChain = crearBlockChain();
 
 		// Agrego unos bloques a la cadena
 		agregarBloques(blockChain);
@@ -31,8 +32,8 @@ public class Aplicacion {
 		mostrarBloques(blockChain);
 	}
 
-	private IBlockChain<DocumentoPDFHasheable> crearBlockChain() {
-		BlockChain<DocumentoPDFHasheable> blockChain = new BlockChain<DocumentoPDFHasheable>(new DocumentoPDFFactory());
+	private IBlockChain<DocumentoPDFHasheable, IDocumentoPDF> crearBlockChain() {
+		BlockChain<DocumentoPDFHasheable, IDocumentoPDF> blockChain = new BlockChain<DocumentoPDFHasheable, IDocumentoPDF>(new DocumentoPDFFactory());
 
 		blockChain.setGeneradorHash(new HashGeneratorMD5<DocumentoPDFHasheable>());
 		blockChain.setTimestampingProvider(new TimestampProviderURL<DocumentoPDFHasheable>());
@@ -41,24 +42,24 @@ public class Aplicacion {
 		return blockChain;
 	}
 
-	private void mostrarBloques(IBlockChain<DocumentoPDFHasheable> blockChain) throws ParseException {
+	private void mostrarBloques(IBlockChain<DocumentoPDFHasheable, IDocumentoPDF> blockChain) throws ParseException {
 
-		Collection<IBlockData<DocumentoPDFHasheable>> bloques = new LinkedList<IBlockData<DocumentoPDFHasheable>>();
+		Collection<IBlockData<IDocumentoPDF>> bloques = new LinkedList<IBlockData<IDocumentoPDF>>();
 
 		// Pido todos los bloques a la blockchain
 		blockChain.getAll(bloques);
 
 		// Imprimo los que traje de la blockchain
-		for (IBlockData<DocumentoPDFHasheable> bloque : bloques)
+		for (IBlockData<IDocumentoPDF> bloque : bloques)
 			mostrarBloque(bloque);
 	}
 
-	private void agregarBloques(IBlockChain<DocumentoPDFHasheable> blockChain) {
+	private void agregarBloques(IBlockChain<DocumentoPDFHasheable, IDocumentoPDF> blockChain) {
 		blockChain.add(new DocumentoPDFHasheable("C:/resumen.pdf"));
 		blockChain.add(new DocumentoPDFHasheable("C:/salida.rtf"));
 	}
 
-	private void mostrarBloque(IBlockData<DocumentoPDFHasheable> bloque) {
+	private void mostrarBloque(IBlockData<IDocumentoPDF> bloque) {
 		System.out.print(bloque.previousHash());
 		System.out.print(", ");
 		System.out.print(bloque.blockHash());

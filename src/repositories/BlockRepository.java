@@ -23,7 +23,7 @@ public class BlockRepository<T extends IBlock>{
 		this.getBloques().add( dato );
 	}
 		
-	public <T2> void getAll( Collection<IBlockData<T2>> bloques, BlockFactory<T2> factory ) throws ParseException
+	public <T2, R> void getAll( Collection<IBlockData<R>> bloques, BlockFactory<T2> factory ) throws ParseException
 	{		
 		for( T block : this.getBloques())
 			bloques.add( factory.createFromBlock(block) );

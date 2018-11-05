@@ -16,7 +16,7 @@ import interfaces.ITimestampedData;
 import repositories.BlockRepository;
 import tsproviders.ITimestampProvider;
 
-public class BlockChain<T> implements IBlockChain<T> {
+public class BlockChain<T, R> implements IBlockChain<T, R> {
 	private BlockFactory<T> 			blockFactory;
 	private BlockRepository<IBlock> 	repositorio;
 	private IHashGenerator<T> 			generadorHash;
@@ -61,7 +61,7 @@ public class BlockChain<T> implements IBlockChain<T> {
 	}
 
 	@Override
-	public void getAll(Collection<IBlockData<T>> bloques){
+	public void getAll(Collection<IBlockData<R>> bloques){
 		try {
 			this.getRepositorio().getAll(bloques, this.getBlockFactory());
 		} catch (ParseException e) {		

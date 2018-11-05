@@ -4,9 +4,9 @@ import org.json.simple.JSONObject;
 
 import hashgenerator.IHashGenerator;
 
-public interface IHashedDataFactory<T> {
+public interface IHashedDataFactory<T, R> {
 
-	public IHashedData<T> createHashedData(JSONObject jsonObject);
+	public IHashedData<R> createHashedData(JSONObject jsonObject);
 	public void toJSON(IHashedData<T> hashedData, JSONObject jsonObject);
 	public void setHashGenerator(IHashGenerator<T> generadorHash);
 

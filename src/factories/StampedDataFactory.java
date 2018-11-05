@@ -7,16 +7,16 @@ import interfaces.IStampedDataFactory;
 import interfaces.ITimestampedData;
 import models.TimestampedData;
 
-public class StampedDataFactory<T> implements IStampedDataFactory<T>{	
+public class StampedDataFactory<T,R> implements IStampedDataFactory<T, R>{	
 
-	private IHashedDataFactory<T> factory;
+	private IHashedDataFactory<T, R> factory;
 	
-	public StampedDataFactory( IHashedDataFactory<T> factory) {
+	public StampedDataFactory( IHashedDataFactory<T, R> factory) {
 		this.setFactory(factory);
 	}
 	
-	public ITimestampedData<T> createStampedData(JSONObject jsonObject) {
-		return new TimestampedData<T>( getFactory().createHashedData( jsonObject ), Long.parseLong( jsonObject.get("timestamp").toString() ) );
+	public ITimestampedData<R> createStampedData(JSONObject jsonObject) {
+		return new TimestampedData<R>( getFactory().createHashedData( jsonObject ), Long.parseLong( jsonObject.get("timestamp").toString() ) );
 	}
 
 	@SuppressWarnings("unchecked")
@@ -26,11 +26,11 @@ public class StampedDataFactory<T> implements IStampedDataFactory<T>{
 		getFactory().toJSON( stampedData.hashedData(), jsonObject );
 	}
 
-	public IHashedDataFactory<T> getFactory() {
+	public IHashedDataFactory<T, R> getFactory() {
 		return factory;
 	}
 
-	public void setFactory(IHashedDataFactory<T> factory) {
+	public void setFactory(IHashedDataFactory<T, R> factory) {
 		this.factory = factory;
 	}
 

@@ -6,27 +6,28 @@ import org.json.simple.parser.ParseException;
 import cipher.IBidirectionalCipher;
 import hashgenerator.IHashGenerator;
 import interfaces.IBlock;
+import interfaces.IBlockData;
 import interfaces.IBlockFactory;
 import interfaces.IStampedDataFactory;
 import interfaces.ITimestampedData;
 import models.AnotherBlock;
 import models.Block;
 
-public class BlockFactory<T> implements IBlockFactory<Block<T>>{
+public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 	
-	private IStampedDataFactory<T> factory;
+	private IStampedDataFactory<T,R> factory;
 	private IBidirectionalCipher dataCipher;
 	
-	public BlockFactory( IStampedDataFactory<T> factory) {
+	public BlockFactory( IStampedDataFactory<T,R> factory) {
 		this.setFactory(factory);
 	}
 
 	@Override
-	public Block<T> createFromBlock(IBlock block) throws ParseException{		
+	public IBlockData<R> createFromBlock(IBlock block) throws ParseException{		
 		JSONParser	parser = new JSONParser();
 		JSONObject	jsonObject = (JSONObject) parser.parse( this.getDataCipher().decrypt( block.blockHash() ) );
 		
-		return new Block<T>( block, getFactory().createStampedData( jsonObject ) );						
+		return new Block<R>( block, getFactory().createStampedData( jsonObject ) );						
 	}
 	
 	public IBlock createBlockToPersist(String previousHash, ITimestampedData<T> stampedData) {		
@@ -41,11 +42,11 @@ public class BlockFactory<T> implements IBlockFactory<Block<T>>{
 		return jsonObject;
 	}
 
-	private IStampedDataFactory<T> getFactory() {
+	private IStampedDataFactory<T,R> getFactory() {
 		return factory;
 	}
 
-	private void setFactory(IStampedDataFactory<T> factory) {
+	private void setFactory(IStampedDataFactory<T,R> factory) {
 		this.factory = factory;
 	}
 

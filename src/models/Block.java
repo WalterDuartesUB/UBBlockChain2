@@ -3,16 +3,16 @@ import interfaces.IBlock;
 import interfaces.IBlockData;
 import interfaces.ITimestampedData;
 
-public class Block<T> implements IBlockData<T>{
+public class Block<R> implements IBlockData<R>{
 
 	private String previousHash;
 	private String hash;
-	private ITimestampedData<T> stampedData;
+	private ITimestampedData<R> stampedData;
 	
-	public Block(IBlock block, ITimestampedData<T> stampedData) {
+	public Block(IBlock block, ITimestampedData<R> iTimestampedData) {
 		this.setPreviousHash(block.previousHash());
 		this.setHash(block.blockHash());
-		this.setStampedData(stampedData);
+		this.setStampedData(iTimestampedData);
 	}
 
 	@Override
@@ -33,11 +33,11 @@ public class Block<T> implements IBlockData<T>{
 		this.previousHash = previousHash;
 	}
 
-	private ITimestampedData<T> getStampedData() {
+	private ITimestampedData<R> getStampedData() {
 		return stampedData;
 	}
 
-	private void setStampedData(ITimestampedData<T> stampedData) {
+	private void setStampedData(ITimestampedData<R> stampedData) {
 		this.stampedData = stampedData;
 	}
 
@@ -55,7 +55,7 @@ public class Block<T> implements IBlockData<T>{
 	}
 	
 	@Override
-	public T data()
+	public R data()
 	{
 		return this.getStampedData().hashedData().data();
 	}

@@ -17,21 +17,21 @@ import repositories.BlockRepository;
 import tsproviders.ITimestampProvider;
 
 public class BlockChain<T, R> implements IBlockChain<T, R> {
-	private BlockFactory<T> 			blockFactory;
-	private BlockRepository<IBlock> 	repositorio;
+	private BlockFactory<T, R> 			blockFactory;	
 	private IHashGenerator<T> 			generadorHash;
-	private ITimestampProvider<T>   	timestampingProvider;
+	private ITimestampProvider<T>   	timestampingProvider;	
+	private BlockRepository<IBlock> 	repositorio;
 	
-	public BlockChain(IDataFactory<T> dataFactory) {
-		this.setBlockFactory(new BlockFactory<T>(new StampedDataFactory<T>(new HashedDataFactory<T>(dataFactory))));
+	public BlockChain(IDataFactory<T, R> dataFactory) {
+		this.setBlockFactory(new BlockFactory<T, R>(new StampedDataFactory<T,R>(new HashedDataFactory<T, R>(dataFactory))));
 		this.setRepositorio(new BlockRepository<IBlock>());
 	}
 
-	private BlockFactory<T> getBlockFactory() {
+	private BlockFactory<T,R> getBlockFactory() {
 		return blockFactory;
 	}
 
-	private void setBlockFactory(BlockFactory<T> blockFactory) {
+	private void setBlockFactory(BlockFactory<T, R> blockFactory) {
 		this.blockFactory = blockFactory;
 	}
 

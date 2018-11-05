@@ -7,20 +7,20 @@ import interfaces.IHashedData;
 import interfaces.IHashedDataFactory;
 import models.HashedData;
 
-public class HashedDataFactory<T> implements IHashedDataFactory<T>{
+public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 	
-	private IDataFactory<T> factory;
+	private IDataFactory<T, R> factory;
 	private IHashGenerator<T> hashGenerator;
 	
-	public HashedDataFactory( IDataFactory<T> factory )
+	public HashedDataFactory( IDataFactory<T, R> factory )
 	{
 		this.setFactory(factory);
 	}
 
-	public IHashedData<T> createHashedData(JSONObject jsonObject) {		
+	public IHashedData<R> createHashedData(JSONObject jsonObject) {		
 		this.getHashGenerator().validate( jsonObject.get("hash").toString() );
 		
-		return new HashedData<T>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );
+		return new HashedData<R>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );
 	}
 
 	@SuppressWarnings("unchecked")
@@ -31,11 +31,11 @@ public class HashedDataFactory<T> implements IHashedDataFactory<T>{
 		
 	}
 
-	public IDataFactory<T> getFactory() {
+	public IDataFactory<T, R> getFactory() {
 		return factory;
 	}
 
-	public void setFactory(IDataFactory<T> factory) {
+	public void setFactory(IDataFactory<T, R> factory) {
 		this.factory = factory;
 	}
 

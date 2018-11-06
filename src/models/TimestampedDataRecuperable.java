@@ -3,11 +3,11 @@ package models;
 import interfaces.hasheddata.IHashedDataRecuperable;
 import interfaces.timestamp.ITimestampedDataRecuperable;
 
-public class TimestampedDataRecuperable<T> implements ITimestampedDataRecuperable<T> {
+public class TimestampedDataRecuperable<R> implements ITimestampedDataRecuperable<R> {
 	private long	timestamp;
-	private IHashedDataRecuperable<T> hashedData;
+	private IHashedDataRecuperable<R> hashedData;
 	
-	public TimestampedDataRecuperable(IHashedDataRecuperable<T> hashedData, long timestamp) {
+	public TimestampedDataRecuperable(IHashedDataRecuperable<R> hashedData, long timestamp) {
 		this.timestamp(timestamp);
 		this.hashedData(hashedData);
 	}
@@ -18,11 +18,11 @@ public class TimestampedDataRecuperable<T> implements ITimestampedDataRecuperabl
 	}
 
 	@Override
-	public IHashedDataRecuperable<T> hashedData() {
+	public IHashedDataRecuperable<R> hashedData() {
 		return this.hashedData;
 	}
 
-	private void hashedData(IHashedDataRecuperable<T> hashedData) {
+	private void hashedData(IHashedDataRecuperable<R> hashedData) {
 		this.hashedData = hashedData;
 	}
 

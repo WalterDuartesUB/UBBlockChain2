@@ -23,11 +23,6 @@ public class HashedData<T> implements IHashedData<T> {
 		this.setHash(hash);
 	}
 
-	public HashedData(T data, String hash) {
-		this(data);
-		this.setHashAsString(hash);
-	}
-
 	@Override
 	public T data() {
 		return this.data;

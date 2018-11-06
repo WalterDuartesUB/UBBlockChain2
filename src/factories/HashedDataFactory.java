@@ -5,7 +5,8 @@ import hashgenerator.IHashGenerator;
 import interfaces.data.IDataFactory;
 import interfaces.hasheddata.IHashedData;
 import interfaces.hasheddata.IHashedDataFactory;
-import models.HashedData;
+import interfaces.hasheddata.IHashedDataRecuperable;
+import models.HashedDataRecuperable;
 
 public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 	
@@ -17,13 +18,15 @@ public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 		this.setFactory(factory);
 	}
 
-	public IHashedData<R> createHashedData(JSONObject jsonObject) {		
+	@Override
+	public IHashedDataRecuperable<R> createHashedData(JSONObject jsonObject) {		
 		this.getHashGenerator().validate( jsonObject.get("hash").toString() );
 		
-		return new HashedData<R>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );
+		return new HashedDataRecuperable<R>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public void toJSON(IHashedData<T> hashedData, JSONObject jsonObject) {
 		jsonObject.put("hash", hashedData.hashAsString() );
 		

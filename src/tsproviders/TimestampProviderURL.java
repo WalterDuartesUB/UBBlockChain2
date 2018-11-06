@@ -14,7 +14,7 @@ public class TimestampProviderURL<T> implements ITimestampProvider<T>{
 		 * 
 		 * hashedData.getDigestAlgorithm();
 		 */
-		
+				
 		return new TimestampedData<T>(hashedData, System.currentTimeMillis());
 	}
 

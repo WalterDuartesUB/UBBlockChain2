@@ -4,9 +4,8 @@ import org.json.simple.JSONObject;
 
 import hashgenerator.IHashGenerator;
 
-public interface ITimestampedDataFactory<T, R> {
-	public ITimestampedDataRecuperable<R> createStampedData(JSONObject jsonObject);
-	
-	public void toJSON(ITimestampedData<T> stampedData, JSONObject jsonObject) ;
-	public void setGeneradorHash(IHashGenerator<T> generadorHash);
+public interface ITimestampedDataFactory<S, R> {
+	public ITimestampedDataRecuperable<R> createStampedData(JSONObject jsonObject);	
+	public void toJSON(ITimestampedData<S> stampedData, JSONObject jsonObject) ;
+	public void setGeneradorHash(IHashGenerator<S> generadorHash);
 }

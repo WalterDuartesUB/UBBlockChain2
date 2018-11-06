@@ -2,7 +2,7 @@ package interfaces.timestamp;
 
 import interfaces.hasheddata.IHashedDataRecuperable;
 
-public interface ITimestampedDataRecuperable<T> {
+public interface ITimestampedDataRecuperable<R> {
 	public long timestamp();
-	public IHashedDataRecuperable<T> hashedData();
+	public IHashedDataRecuperable<R> hashedData();
 }

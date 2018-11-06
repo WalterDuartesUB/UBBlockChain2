@@ -1,6 +1,6 @@
 package hashgenerator;
 
-import interfaces.IHashedData;
+import interfaces.hasheddata.IHashedData;
 
 public interface IHashGenerator<T> {
 	IHashedData<T> hash( T data );

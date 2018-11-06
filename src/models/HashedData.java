@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 import javax.xml.bind.DatatypeConverter;
 
-import interfaces.IHashedData;
+import interfaces.hasheddata.IHashedData;
 
 public class HashedData<T> implements IHashedData<T> {
 

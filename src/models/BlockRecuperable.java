@@ -1,7 +1,7 @@
 package models;
-import interfaces.IBlock;
-import interfaces.IBlockData;
-import interfaces.ITimestampedDataRecuperable;
+import interfaces.block.IBlock;
+import interfaces.block.IBlockData;
+import interfaces.timestamp.ITimestampedDataRecuperable;
 
 public class BlockRecuperable<R> extends BlockStoreable implements IBlockData<R>{
 	private ITimestampedDataRecuperable<R> stampedData;

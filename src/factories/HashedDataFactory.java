@@ -2,9 +2,9 @@ package factories;
 import org.json.simple.JSONObject;
 
 import hashgenerator.IHashGenerator;
-import interfaces.IDataFactory;
-import interfaces.IHashedData;
-import interfaces.IHashedDataFactory;
+import interfaces.data.IDataFactory;
+import interfaces.hasheddata.IHashedData;
+import interfaces.hasheddata.IHashedDataFactory;
 import models.HashedData;
 
 public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import interfaces.IHasheableData;
+import interfaces.hasheddata.IHasheableData;
 
 public class DocumentoPDFHasheable extends DocumentoPDFRecuperable implements IHasheableData {
 	

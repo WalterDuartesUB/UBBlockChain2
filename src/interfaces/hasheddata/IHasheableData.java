@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.hasheddata;
 
 import java.io.IOException;
 

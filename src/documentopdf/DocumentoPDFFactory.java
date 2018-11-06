@@ -1,7 +1,7 @@
 package documentopdf;
 import org.json.simple.JSONObject;
 
-import interfaces.IDataFactory;
+import interfaces.data.IDataFactory;
 
 public class DocumentoPDFFactory implements IDataFactory<DocumentoPDFHasheable, IDocumentoPDF>{
 	@Override

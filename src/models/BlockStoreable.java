@@ -1,6 +1,6 @@
 package models;
 
-import interfaces.IBlock;
+import interfaces.block.IBlock;
 
 public class BlockStoreable implements IBlock {
 	private String previousHash;

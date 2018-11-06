@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import interfaces.IHasheableData;
-import interfaces.IHashedData;
+import interfaces.hasheddata.IHasheableData;
+import interfaces.hasheddata.IHashedData;
 import models.HashedData;
 
 public class HashGeneratorMD5<T extends IHasheableData> implements IHashGenerator<T> {

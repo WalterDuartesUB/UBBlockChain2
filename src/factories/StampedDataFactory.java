@@ -2,10 +2,10 @@ package factories;
 import org.json.simple.JSONObject;
 
 import hashgenerator.IHashGenerator;
-import interfaces.IHashedDataFactory;
-import interfaces.IStampedDataFactory;
-import interfaces.ITimestampedData;
-import interfaces.ITimestampedDataRecuperable;
+import interfaces.hasheddata.IHashedDataFactory;
+import interfaces.timestamp.IStampedDataFactory;
+import interfaces.timestamp.ITimestampedData;
+import interfaces.timestamp.ITimestampedDataRecuperable;
 import models.TimestampedDataRecuperable;
 
 public class StampedDataFactory<T,R> implements IStampedDataFactory<T, R>{	

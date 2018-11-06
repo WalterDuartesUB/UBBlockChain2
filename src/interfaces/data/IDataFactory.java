@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.data;
 
 import org.json.simple.JSONObject;
 

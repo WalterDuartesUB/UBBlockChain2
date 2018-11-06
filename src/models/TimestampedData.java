@@ -1,6 +1,6 @@
 package models;
-import interfaces.IHashedData;
-import interfaces.ITimestampedData;
+import interfaces.hasheddata.IHashedData;
+import interfaces.timestamp.ITimestampedData;
 
 public class TimestampedData<T> implements ITimestampedData<T> {
 

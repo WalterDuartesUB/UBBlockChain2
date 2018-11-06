@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.block;
 
 public interface IBlockData<T> extends IBlock {
 	public long timestamp();

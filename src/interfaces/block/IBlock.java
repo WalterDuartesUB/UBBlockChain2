@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.block;
 
 public interface IBlock {
 	public String previousHash();

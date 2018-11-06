@@ -10,7 +10,7 @@ import documentopdf.DocumentoPDFHasheable;
 import documentopdf.IDocumentoPDF;
 import documentopdf.DocumentoPDFFactory;
 import hashgenerator.HashGeneratorMD5;
-import interfaces.IBlockData;
+import interfaces.block.IBlockData;
 import tsproviders.TimestampProviderURL;
 
 public class Aplicacion {

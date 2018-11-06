@@ -7,8 +7,8 @@ import java.util.NoSuchElementException;
 import org.json.simple.parser.ParseException;
 
 import factories.BlockFactory;
-import interfaces.IBlock;
-import interfaces.IBlockData;
+import interfaces.block.IBlock;
+import interfaces.block.IBlockData;
 
 public class BlockRepository<T extends IBlock>{
 	private Collection<T>	bloques;

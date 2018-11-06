@@ -1,7 +1,7 @@
 package blockchain;
 import java.util.Collection;
 
-import interfaces.IBlockData;
+import interfaces.block.IBlockData;
 
 public interface IBlockChain<T, R> {
 	public void add(T data);

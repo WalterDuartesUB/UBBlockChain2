@@ -1,6 +1,6 @@
 package models;
 
-import interfaces.ITimestampedDataRecuperable;
+import interfaces.timestamp.ITimestampedDataRecuperable;
 
 public class TimestampedDataRecuperable<T> implements ITimestampedDataRecuperable<T> {
 	private long	timestamp;

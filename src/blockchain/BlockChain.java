@@ -9,11 +9,11 @@ import factories.BlockFactory;
 import factories.HashedDataFactory;
 import factories.StampedDataFactory;
 import hashgenerator.IHashGenerator;
-import interfaces.IBlock;
-import interfaces.IBlockData;
-import interfaces.IDataFactory;
-import interfaces.IHashedData;
-import interfaces.ITimestampedData;
+import interfaces.block.IBlock;
+import interfaces.block.IBlockData;
+import interfaces.data.IDataFactory;
+import interfaces.hasheddata.IHashedData;
+import interfaces.timestamp.ITimestampedData;
 import repositories.BlockRepository;
 import tsproviders.ITimestampProvider;
 

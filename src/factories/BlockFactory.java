@@ -5,11 +5,11 @@ import org.json.simple.parser.ParseException;
 
 import cipher.IBidirectionalCipher;
 import hashgenerator.IHashGenerator;
-import interfaces.IBlock;
-import interfaces.IBlockData;
-import interfaces.IBlockFactory;
-import interfaces.IStampedDataFactory;
-import interfaces.ITimestampedData;
+import interfaces.block.IBlock;
+import interfaces.block.IBlockData;
+import interfaces.block.IBlockFactory;
+import interfaces.timestamp.IStampedDataFactory;
+import interfaces.timestamp.ITimestampedData;
 import models.BlockStoreable;
 import models.BlockRecuperable;
 

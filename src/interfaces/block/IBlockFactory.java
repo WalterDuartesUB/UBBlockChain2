@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.block;
 
 import org.json.simple.parser.ParseException;
 

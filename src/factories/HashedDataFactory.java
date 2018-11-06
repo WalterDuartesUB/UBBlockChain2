@@ -17,6 +17,12 @@ public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 		this.setFactory(factory);
 	}
 
+	public HashedDataFactory( IDataFactory<T, R> factory, IHashValidator hashValidator )
+	{
+		this(factory);
+		this.setHashValidator(hashValidator);
+	}
+
 	@Override
 	public IHashedDataRecuperable<R> createHashedData(JSONObject jsonObject) {		
 		this.getHashValidator().validate( jsonObject.get("hash").toString() );

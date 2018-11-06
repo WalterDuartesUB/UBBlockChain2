@@ -23,6 +23,11 @@ public class BlockFactory<S, R> implements IBlockFactory<S>, IBlockDataFactory<R
 		this.setFactory(factory);
 	}
 
+	public BlockFactory( ITimestampedDataFactory<S,R> factory, IBidirectionalCipher dataCipher) {
+		this(factory);
+		this.setDataCipher(dataCipher);
+	}
+	
 	@Override
 	public IBlockData<R> createFromBlock(IBlock block) throws ParseException{		
 		JSONParser	parser = new JSONParser();

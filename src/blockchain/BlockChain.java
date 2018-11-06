@@ -56,6 +56,15 @@ public class BlockChain<T extends IDataHasheable, R extends IDataRecuperable> im
 		}
 	}
 
+	@Override
+	public <R2> void getAll(Collection<IBlockData<R2>> bloques, IDataFactory<T, R2> dataFactory) {
+		try {
+			this.getBlockRepository().getAll(bloques, new BlockFactory<T, R2>(new TimestampedDataFactory<T, R2>(new HashedDataFactory<T, R2>(dataFactory, this.hashGenerator)), this.getBlockFactory().getDataCipher()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}			
+	}
+	
 	private IBlockFactory<T> blockFactory() {
 		return this.getBlockFactory();
 	}

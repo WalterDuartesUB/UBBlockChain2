@@ -1,6 +1,5 @@
 package interfaces;
-public interface IHashedData<T>{
-	public T data();
-	public String hashAsString();
-	String getDigestAlgorithm();	
+public interface IHashedData<T> extends IHashedDataRecuperable<T>{
+	public String getDigestAlgorithm();
+	public byte[] getHash();
 }

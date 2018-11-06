@@ -7,13 +7,14 @@ import cipher.IBidirectionalCipher;
 import hashgenerator.IHashValidator;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
+import interfaces.block.IBlockDataFactory;
 import interfaces.block.IBlockFactory;
 import interfaces.timestamp.ITimestampedData;
 import interfaces.timestamp.ITimestampedDataFactory;
 import models.block.BlockRecuperable;
 import models.block.BlockStoreable;
 
-public class BlockFactory<S, R> implements IBlockFactory<S,R>{
+public class BlockFactory<S, R> implements IBlockFactory<S>, IBlockDataFactory<R>{
 	
 	private ITimestampedDataFactory<S,R> factory;
 	private IBidirectionalCipher dataCipher;

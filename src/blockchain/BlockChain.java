@@ -12,6 +12,8 @@ import hashgenerator.HashGenerator;
 import hashgenerator.IHashGenerator;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
+import interfaces.block.IBlockDataFactory;
+import interfaces.block.IBlockFactory;
 import interfaces.data.IDataFactory;
 import interfaces.hasheddata.IHashedData;
 import interfaces.repositories.IBlockRepository;
@@ -40,16 +42,24 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 	}
 
 	private IBlock createBlockToPersist(T data) {
-		return this.getBlockFactory().createBlockToPersist(this.getLastHash(), createTimestampedData(data));
+		return this.blockFactory().createBlockToPersist(this.getLastHash(), createTimestampedData(data));
 	}
 
 	@Override
 	public void getAll(Collection<IBlockData<R>> bloques) {
 		try {
-			this.getBlockRepository().getAll(bloques, this.getBlockFactory());
+			this.getBlockRepository().getAll(bloques, this.blockDataFactory());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private IBlockFactory<T> blockFactory() {
+		return this.getBlockFactory();
+	}
+	
+	private IBlockDataFactory<R> blockDataFactory() {
+		return this.getBlockFactory();
 	}
 
 	public IHashGenerator<T> getGeneradorHash() {

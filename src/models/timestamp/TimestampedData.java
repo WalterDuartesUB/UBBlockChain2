@@ -1,4 +1,5 @@
 package models.timestamp;
+
 import interfaces.hasheddata.IHashedData;
 import interfaces.timestamp.ITimestampedData;
 
@@ -9,7 +10,7 @@ public class TimestampedData<T> implements ITimestampedData<T> {
 
 	public TimestampedData(IHashedData<T> hashedData, long timestamp) {
 		this.setHashedData(hashedData);
-		this.timestamp( timestamp );
+		this.timestamp(timestamp);
 	}
 
 	public IHashedData<T> getHashedData() {

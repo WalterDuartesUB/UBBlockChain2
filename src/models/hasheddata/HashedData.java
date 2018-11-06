@@ -6,58 +6,29 @@ import javax.xml.bind.DatatypeConverter;
 
 import interfaces.hasheddata.IHashedData;
 
-public class HashedData<T> implements IHashedData<T> {
-
-	private T data;
+public class HashedData<T> extends HashedDataRecuperable<T> implements IHashedData<T> {	
 	private byte[] hash;
-	private String hashAsString;
 	private MessageDigest messageDigest;
 
-	private HashedData(T data) {
-		this.data(data);
-	}
-
 	public HashedData(T data, MessageDigest messageDigest, byte[] hash) {
-		this(data);
-		this.setMessageDigest(messageDigest);
+		super( data, DatatypeConverter.printHexBinary(hash).toUpperCase());
+		
+		this.setMessageDigest(messageDigest);		
 		this.setHash(hash);
 	}
-
+	
 	@Override
-	public T data() {
-		return this.data;
-	}
-
-	public void data(T data) {
-		this.data = data;
-	}
-
-	@Override
-	public String hashAsString() {
-		return getHashAsString();
-	}
-
 	public byte[] getHash() {
 		return hash;
 	}
-
-	private void setHash(byte[] hash) {
-		this.hash = hash;
-
-		this.setHashAsString(DatatypeConverter.printHexBinary(this.getHash()).toUpperCase());
-	}
-
-	private String getHashAsString() {
-		return hashAsString;
-	}
-
-	private void setHashAsString(String hashAsString) {
-		this.hashAsString = hashAsString;
-	}
-
+	
 	@Override
 	public String getDigestAlgorithm() {
 		return this.getMessageDigest().getAlgorithm();
+	}
+	
+	private void setHash(byte[] hash) {
+		this.hash = hash;
 	}
 
 	private MessageDigest getMessageDigest() {

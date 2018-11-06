@@ -4,9 +4,9 @@ import interfaces.hasheddata.IHashedDataRecuperable;
 import interfaces.timestamp.ITimestampedDataRecuperable;
 
 public class TimestampedDataRecuperable<R> implements ITimestampedDataRecuperable<R> {
-	private long	timestamp;
+	private long timestamp;
 	private IHashedDataRecuperable<R> hashedData;
-	
+
 	public TimestampedDataRecuperable(IHashedDataRecuperable<R> hashedData, long timestamp) {
 		this.timestamp(timestamp);
 		this.hashedData(hashedData);

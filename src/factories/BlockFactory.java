@@ -10,8 +10,8 @@ import interfaces.IBlockData;
 import interfaces.IBlockFactory;
 import interfaces.IStampedDataFactory;
 import interfaces.ITimestampedData;
-import models.AnotherBlock;
-import models.Block;
+import models.BlockStoreable;
+import models.BlockRecuperable;
 
 public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 	
@@ -27,11 +27,11 @@ public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 		JSONParser	parser = new JSONParser();
 		JSONObject	jsonObject = (JSONObject) parser.parse( this.getDataCipher().decrypt( block.blockHash() ) );
 		
-		return new Block<R>( block, getFactory().createStampedData( jsonObject ) );						
+		return new BlockRecuperable<R>( block, getFactory().createStampedData( jsonObject ) );						
 	}
 	
 	public IBlock createBlockToPersist(String previousHash, ITimestampedData<T> stampedData) {		
-		return new AnotherBlock( previousHash, this.getDataCipher().encrypt( toJSON(stampedData).toJSONString() ) );
+		return new BlockStoreable( previousHash, this.getDataCipher().encrypt( toJSON(stampedData).toJSONString() ) );
 	}
 
 	private JSONObject toJSON(ITimestampedData<T> stampedData) {

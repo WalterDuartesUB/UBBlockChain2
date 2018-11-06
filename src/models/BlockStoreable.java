@@ -2,11 +2,11 @@ package models;
 
 import interfaces.IBlock;
 
-public class AnotherBlock implements IBlock {
+public class BlockStoreable implements IBlock {
 	private String previousHash;
 	private String hash;
 	
-	public AnotherBlock(String previousHash, String hash) {
+	public BlockStoreable(String previousHash, String hash) {
 		this.setHash(hash);
 		this.setPreviousHash(previousHash);
 	}
@@ -36,10 +36,5 @@ public class AnotherBlock implements IBlock {
 	private void setHash(String hash) {
 		this.hash = hash;
 	}
-
-	@Override
-	public String toString() {
-		return "AnotherBlock [previousHash=" + previousHash + ", hash=" + hash + "]";
-	}	
 	
 }

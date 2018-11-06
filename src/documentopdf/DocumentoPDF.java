@@ -6,9 +6,9 @@ import java.nio.file.Paths;
 
 import interfaces.data.IDataHasheable;
 
-public class DocumentoPDFHasheable extends DocumentoPDFRecuperable implements IDataHasheable {
+public class DocumentoPDF extends DocumentoPDFRecuperable implements IDataHasheable {
 	
-	public DocumentoPDFHasheable(String pathDocumento) {
+	public DocumentoPDF(String pathDocumento) {
 		super(pathDocumento);
 	}
 	

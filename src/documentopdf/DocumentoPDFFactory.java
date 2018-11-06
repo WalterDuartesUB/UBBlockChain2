@@ -3,7 +3,7 @@ import org.json.simple.JSONObject;
 
 import interfaces.data.IDataFactory;
 
-public class DocumentoPDFFactory implements IDataFactory<DocumentoPDFHasheable, IDocumentoPDF>{
+public class DocumentoPDFFactory implements IDataFactory<DocumentoPDF, IDocumentoPDF>{
 	@Override
 	public IDocumentoPDF createData(JSONObject jsonObject) {
 		return new DocumentoPDFRecuperable( jsonObject.get("path_documento").toString() );
@@ -11,7 +11,7 @@ public class DocumentoPDFFactory implements IDataFactory<DocumentoPDFHasheable, 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void toJSON(DocumentoPDFHasheable data, JSONObject jsonObject) {
+	public void toJSON(DocumentoPDF data, JSONObject jsonObject) {
 		jsonObject.put("path_documento", data.getPathDocumento() );		
 	}
 

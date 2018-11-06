@@ -1,7 +1,7 @@
-package interfaces.hasheddata;
+package interfaces.data;
 
 import java.io.IOException;
 
-public interface IHasheableData {
+public interface IDataHasheable {
 	public byte[] toBytes() throws IOException;
 }

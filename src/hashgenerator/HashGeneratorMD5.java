@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import interfaces.hasheddata.IHasheableData;
+import interfaces.data.IDataHasheable;
 import interfaces.hasheddata.IHashedData;
 import models.hasheddata.HashedData;
 
-public class HashGeneratorMD5<T extends IHasheableData> extends HashGenerator<T> {
+public class HashGeneratorMD5<T extends IDataHasheable> extends HashGenerator<T> {
 
 	@Override
 	public IHashedData<T> hash(T data) {

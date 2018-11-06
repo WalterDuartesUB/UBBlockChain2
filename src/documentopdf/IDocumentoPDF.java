@@ -1,6 +1,8 @@
 package documentopdf;
 
-public interface IDocumentoPDF {
+import interfaces.data.IDataRecuperable;
+
+public interface IDocumentoPDF extends IDataRecuperable {
 	public String getPathDocumento(); 
 	
 }

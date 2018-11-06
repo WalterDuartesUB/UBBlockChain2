@@ -8,7 +8,7 @@ import interfaces.hasheddata.IHasheableData;
 import interfaces.hasheddata.IHashedData;
 import models.HashedData;
 
-public class HashGeneratorMD5<T extends IHasheableData> implements IHashGenerator<T> {
+public class HashGeneratorMD5<T extends IHasheableData> extends HashGenerator<T> {
 
 	@Override
 	public IHashedData<T> hash(T data) {

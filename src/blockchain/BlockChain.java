@@ -8,6 +8,7 @@ import cipher.IBidirectionalCipher;
 import factories.BlockFactory;
 import factories.HashedDataFactory;
 import factories.StampedDataFactory;
+import hashgenerator.HashGenerator;
 import hashgenerator.IHashGenerator;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
@@ -19,13 +20,17 @@ import tsproviders.ITimestampProvider;
 
 public class BlockChain<T, R> implements IBlockChain<T, R> {
 	private BlockFactory<T, R> blockFactory;
-	private IHashGenerator<T> generadorHash;
+	private HashGenerator<T> generadorHash;
 	private ITimestampProvider<T> timestampingProvider;
 	private BlockRepository<IBlock> repositorio;
 
 	public BlockChain(IDataFactory<T, R> dataFactory) {
-		this.setBlockFactory(new BlockFactory<T, R>(new StampedDataFactory<T, R>(new HashedDataFactory<T, R>(dataFactory))));
 		this.setRepositorio(new BlockRepository<IBlock>());
+		this.createBlockFactory(dataFactory);		
+	}
+
+	private void createBlockFactory(IDataFactory<T, R> dataFactory) {
+		this.setBlockFactory(new BlockFactory<T, R>(new StampedDataFactory<T, R>(new HashedDataFactory<T, R>(dataFactory))));
 	}
 
 	@Override
@@ -50,7 +55,7 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 		return generadorHash;
 	}
 
-	public void setGeneradorHash(IHashGenerator<T> generadorHash) {
+	public void setGeneradorHash(HashGenerator<T> generadorHash) {
 		this.generadorHash = generadorHash;
 
 		this.getBlockFactory().setHashValidator(generadorHash);

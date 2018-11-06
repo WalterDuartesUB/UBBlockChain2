@@ -6,9 +6,9 @@ import java.util.NoSuchElementException;
 
 import org.json.simple.parser.ParseException;
 
-import factories.BlockFactory;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
+import interfaces.block.IBlockFactory;
 
 public class BlockRepository<T extends IBlock>{
 	private Collection<T>	bloques;
@@ -23,7 +23,7 @@ public class BlockRepository<T extends IBlock>{
 		this.getBloques().add( dato );
 	}
 		
-	public <T2, R> void getAll( Collection<IBlockData<R>> bloques, BlockFactory<T2, R> factory ) throws ParseException
+	public <T2, R> void getAll( Collection<IBlockData<R>> bloques, IBlockFactory<T2, R> factory ) throws ParseException
 	{		
 		for( T block : this.getBloques())
 			bloques.add( factory.createFromBlock(block) );

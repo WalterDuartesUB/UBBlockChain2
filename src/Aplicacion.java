@@ -36,7 +36,7 @@ public class Aplicacion {
 		BlockChain<DocumentoPDF, IDocumentoPDF> blockChain = new BlockChain<DocumentoPDF, IDocumentoPDF>(new DocumentoPDFFactory());
 
 		blockChain.setGeneradorHash(new HashGeneratorMD5());
-		blockChain.setTimestampingProvider(new TimestampProviderURL<DocumentoPDF>());
+		blockChain.setTimestampingProvider(new TimestampProviderURL());
 		blockChain.setDataCipher(new BidiriectionalCipherAES());
 
 		return blockChain;

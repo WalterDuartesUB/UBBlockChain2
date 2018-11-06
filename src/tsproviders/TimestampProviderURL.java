@@ -4,10 +4,10 @@ import interfaces.timestamp.ITimestampedData;
 import interfaces.tsproviders.ITimestampProvider;
 import models.timestamp.TimestampedData;
 
-public class TimestampProviderURL<T> implements ITimestampProvider<T>{
+public class TimestampProviderURL implements ITimestampProvider{
 
 	@Override
-	public ITimestampedData<T> stamp(IHashedData<T> hashedData) {	
+	public <T> ITimestampedData<T> stamp(IHashedData<T> hashedData) {	
 		
 		/*
 		 * Utilizo el mismo algoritmo de para generar el hash para reportarlo al 

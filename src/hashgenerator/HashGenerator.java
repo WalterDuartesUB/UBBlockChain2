@@ -1,5 +1,5 @@
 package hashgenerator;
 
-public abstract class HashGenerator<T> implements IHashGenerator<T>, IHashValidator{
+public abstract class HashGenerator implements IHashGenerator, IHashValidator{
 
 }

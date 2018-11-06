@@ -8,10 +8,10 @@ import interfaces.data.IDataHasheable;
 import interfaces.hasheddata.IHashedData;
 import models.hasheddata.HashedData;
 
-public class HashGeneratorMD5<T extends IDataHasheable> extends HashGenerator<T> {
+public class HashGeneratorMD5 extends HashGenerator {
 
 	@Override
-	public IHashedData<T> hash(T data) {
+	public <T extends IDataHasheable> IHashedData<T> hash(T data) {
 		
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");

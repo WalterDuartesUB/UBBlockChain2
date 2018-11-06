@@ -25,7 +25,7 @@ import repositories.BlockRepository;
 
 public class BlockChain<T extends IDataHasheable, R extends IDataRecuperable> implements IBlockChain<T, R> {
 	private BlockFactory<T, R> blockFactory;
-	private HashGenerator<T> hashGenerator;
+	private HashGenerator hashGenerator;
 	private ITimestampProvider<T> timestampingProvider;
 	private IBlockRepository<IBlock> blockRepository;
 
@@ -64,11 +64,11 @@ public class BlockChain<T extends IDataHasheable, R extends IDataRecuperable> im
 		return this.getBlockFactory();
 	}
 
-	public IHashGenerator<T> getGeneradorHash() {
+	public IHashGenerator getGeneradorHash() {
 		return hashGenerator;
 	}
 
-	public void setGeneradorHash(HashGenerator<T> generadorHash) {
+	public void setGeneradorHash(HashGenerator generadorHash) {
 		this.hashGenerator = generadorHash;
 
 		this.getBlockFactory().setHashValidator(generadorHash);

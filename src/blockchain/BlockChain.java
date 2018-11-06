@@ -20,12 +20,12 @@ import tsproviders.ITimestampProvider;
 
 public class BlockChain<T, R> implements IBlockChain<T, R> {
 	private BlockFactory<T, R> blockFactory;
-	private HashGenerator<T> generadorHash;
+	private HashGenerator<T> hashGenerator;
 	private ITimestampProvider<T> timestampingProvider;
-	private BlockRepository<IBlock> repositorio;
+	private BlockRepository<IBlock> blockRepository;
 
 	public BlockChain(IDataFactory<T, R> dataFactory) {
-		this.setRepositorio(new BlockRepository<IBlock>());
+		this.setBlockRepository(new BlockRepository<IBlock>());
 		this.createBlockFactory(dataFactory);		
 	}
 
@@ -35,7 +35,7 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 
 	@Override
 	public void add(T data) {
-		this.getRepositorio().add(createBlockToPersist(data));
+		this.getBlockRepository().add(createBlockToPersist(data));
 	}
 
 	private IBlock createBlockToPersist(T data) {
@@ -45,18 +45,18 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 	@Override
 	public void getAll(Collection<IBlockData<R>> bloques) {
 		try {
-			this.getRepositorio().getAll(bloques, this.getBlockFactory());
+			this.getBlockRepository().getAll(bloques, this.getBlockFactory());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public IHashGenerator<T> getGeneradorHash() {
-		return generadorHash;
+		return hashGenerator;
 	}
 
 	public void setGeneradorHash(HashGenerator<T> generadorHash) {
-		this.generadorHash = generadorHash;
+		this.hashGenerator = generadorHash;
 
 		this.getBlockFactory().setHashValidator(generadorHash);
 	}
@@ -81,12 +81,12 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 		this.blockFactory = blockFactory;
 	}
 
-	private BlockRepository<IBlock> getRepositorio() {
-		return repositorio;
+	private BlockRepository<IBlock> getBlockRepository() {
+		return blockRepository;
 	}
 
-	private void setRepositorio(BlockRepository<IBlock> repositorio) {
-		this.repositorio = repositorio;
+	private void setBlockRepository(BlockRepository<IBlock> repositorio) {
+		this.blockRepository = repositorio;
 	}
 
 	private ITimestampedData<T> createTimestampedData(T data) {
@@ -98,6 +98,6 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 	}
 
 	private String getLastHash() {
-		return this.getRepositorio().getLastBlockHash();
+		return this.getBlockRepository().getLastBlockHash();
 	}
 }

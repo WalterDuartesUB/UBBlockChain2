@@ -1,4 +1,4 @@
-package tsproviders;
+package interfaces.tsproviders;
 import interfaces.hasheddata.IHashedData;
 import interfaces.timestamp.ITimestampedData;
 

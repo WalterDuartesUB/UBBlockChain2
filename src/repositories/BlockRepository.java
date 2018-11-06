@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.block.IBlockFactory;
+import interfaces.repositories.IBlockRepository;
 
 public class BlockRepository<T extends IBlock> implements IBlockRepository<T>{
 	private Collection<T>	bloques;

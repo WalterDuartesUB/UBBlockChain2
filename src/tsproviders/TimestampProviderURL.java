@@ -1,7 +1,8 @@
 package tsproviders;
 import interfaces.hasheddata.IHashedData;
 import interfaces.timestamp.ITimestampedData;
-import models.TimestampedData;
+import interfaces.tsproviders.ITimestampProvider;
+import models.timestamp.TimestampedData;
 
 public class TimestampProviderURL<T> implements ITimestampProvider<T>{
 

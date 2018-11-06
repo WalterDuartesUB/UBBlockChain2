@@ -1,4 +1,4 @@
-package models;
+package models.timestamp;
 
 import interfaces.hasheddata.IHashedDataRecuperable;
 import interfaces.timestamp.ITimestampedDataRecuperable;

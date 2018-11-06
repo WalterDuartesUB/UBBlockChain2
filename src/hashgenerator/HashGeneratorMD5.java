@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 import interfaces.hasheddata.IHasheableData;
 import interfaces.hasheddata.IHashedData;
-import models.HashedData;
+import models.hasheddata.HashedData;
 
 public class HashGeneratorMD5<T extends IHasheableData> extends HashGenerator<T> {
 

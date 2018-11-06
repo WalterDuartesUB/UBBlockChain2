@@ -10,8 +10,8 @@ import interfaces.block.IBlockData;
 import interfaces.block.IBlockFactory;
 import interfaces.timestamp.ITimestampedData;
 import interfaces.timestamp.ITimestampedDataFactory;
-import models.BlockRecuperable;
-import models.BlockStoreable;
+import models.block.BlockRecuperable;
+import models.block.BlockStoreable;
 
 public class BlockFactory<S, R> implements IBlockFactory<S,R>{
 	

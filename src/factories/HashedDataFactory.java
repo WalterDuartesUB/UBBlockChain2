@@ -6,7 +6,7 @@ import interfaces.data.IDataFactory;
 import interfaces.hasheddata.IHashedData;
 import interfaces.hasheddata.IHashedDataFactory;
 import interfaces.hasheddata.IHashedDataRecuperable;
-import models.HashedDataRecuperable;
+import models.hasheddata.HashedDataRecuperable;
 
 public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 	

@@ -6,7 +6,7 @@ import interfaces.hasheddata.IHashedDataFactory;
 import interfaces.timestamp.ITimestampedData;
 import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedDataRecuperable;
-import models.TimestampedDataRecuperable;
+import models.timestamp.TimestampedDataRecuperable;
 
 public class StampedDataFactory<T,R> implements ITimestampedDataFactory<T, R>{	
 

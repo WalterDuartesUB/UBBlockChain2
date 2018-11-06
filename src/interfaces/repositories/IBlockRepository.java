@@ -1,4 +1,4 @@
-package repositories;
+package interfaces.repositories;
 
 import java.util.Collection;
 

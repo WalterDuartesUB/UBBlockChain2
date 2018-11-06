@@ -14,10 +14,10 @@ import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.data.IDataFactory;
 import interfaces.hasheddata.IHashedData;
+import interfaces.repositories.IBlockRepository;
 import interfaces.timestamp.ITimestampedData;
+import interfaces.tsproviders.ITimestampProvider;
 import repositories.BlockRepository;
-import repositories.IBlockRepository;
-import tsproviders.ITimestampProvider;
 
 public class BlockChain<T, R> implements IBlockChain<T, R> {
 	private BlockFactory<T, R> blockFactory;

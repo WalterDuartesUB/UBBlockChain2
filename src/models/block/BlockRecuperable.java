@@ -1,4 +1,4 @@
-package models;
+package models.block;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.timestamp.ITimestampedDataRecuperable;

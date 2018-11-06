@@ -1,4 +1,4 @@
-package models;
+package models.block;
 
 import interfaces.block.IBlock;
 

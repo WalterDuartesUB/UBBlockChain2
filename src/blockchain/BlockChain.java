@@ -7,7 +7,7 @@ import org.json.simple.parser.ParseException;
 import cipher.IBidirectionalCipher;
 import factories.BlockFactory;
 import factories.HashedDataFactory;
-import factories.StampedDataFactory;
+import factories.TimestampedDataFactory;
 import hashgenerator.HashGenerator;
 import hashgenerator.IHashGenerator;
 import interfaces.block.IBlock;
@@ -35,7 +35,7 @@ public class BlockChain<T extends IDataHasheable, R extends IDataRecuperable> im
 	}
 
 	private void createBlockFactory(IDataFactory<T, R> dataFactory) {
-		this.setBlockFactory(new BlockFactory<T, R>(new StampedDataFactory<T, R>(new HashedDataFactory<T, R>(dataFactory))));
+		this.setBlockFactory(new BlockFactory<T, R>(new TimestampedDataFactory<T, R>(new HashedDataFactory<T, R>(dataFactory))));
 	}
 
 	@Override

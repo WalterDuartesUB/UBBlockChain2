@@ -8,11 +8,11 @@ import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedDataRecuperable;
 import models.timestamp.TimestampedDataRecuperable;
 
-public class StampedDataFactory<T,R> implements ITimestampedDataFactory<T, R>{	
+public class TimestampedDataFactory<T,R> implements ITimestampedDataFactory<T, R>{	
 
 	private IHashedDataFactory<T, R> factory;
 	
-	public StampedDataFactory( IHashedDataFactory<T, R> factory) {
+	public TimestampedDataFactory( IHashedDataFactory<T, R> factory) {
 		this.setFactory(factory);
 	}
 	

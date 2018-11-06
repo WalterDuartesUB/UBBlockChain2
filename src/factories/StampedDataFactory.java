@@ -36,8 +36,8 @@ public class StampedDataFactory<T,R> implements ITimestampedDataFactory<T, R>{
 	}
 
 	@Override
-	public void setGeneradorHash(IHashGenerator<T> generadorHash) {
-		this.getFactory().setHashGenerator( generadorHash );
+	public void setHashValidator(IHashGenerator<T> hashValidator) {
+		this.getFactory().setHashValidator( hashValidator );
 		
 	}
 

@@ -13,12 +13,12 @@ import interfaces.timestamp.ITimestampedData;
 import models.BlockStoreable;
 import models.BlockRecuperable;
 
-public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
+public class BlockFactory<S, R> implements IBlockFactory<S,R>{
 	
-	private ITimestampedDataFactory<T,R> factory;
+	private ITimestampedDataFactory<S,R> factory;
 	private IBidirectionalCipher dataCipher;
 	
-	public BlockFactory( ITimestampedDataFactory<T,R> factory) {
+	public BlockFactory( ITimestampedDataFactory<S,R> factory) {
 		this.setFactory(factory);
 	}
 
@@ -30,11 +30,12 @@ public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 		return new BlockRecuperable<R>( block, getFactory().createStampedData( jsonObject ) );						
 	}
 	
-	public IBlock createBlockToPersist(String previousHash, ITimestampedData<T> stampedData) {		
+	@Override
+	public IBlock createBlockToPersist(String previousHash, ITimestampedData<S> stampedData) {		
 		return new BlockStoreable( previousHash, this.getDataCipher().encrypt( toJSON(stampedData).toJSONString() ) );
 	}
 
-	private JSONObject toJSON(ITimestampedData<T> stampedData) {
+	private JSONObject toJSON(ITimestampedData<S> stampedData) {
 		JSONObject	jsonObject =  new JSONObject();
 		
 		getFactory().toJSON( stampedData, jsonObject );
@@ -42,11 +43,11 @@ public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 		return jsonObject;
 	}
 
-	private ITimestampedDataFactory<T,R> getFactory() {
+	private ITimestampedDataFactory<S,R> getFactory() {
 		return factory;
 	}
 
-	private void setFactory(ITimestampedDataFactory<T,R> factory) {
+	private void setFactory(ITimestampedDataFactory<S,R> factory) {
 		this.factory = factory;
 	}
 
@@ -58,8 +59,8 @@ public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 		this.dataCipher = dataCipher;
 	}
 
-	public void setGeneradorHash(IHashGenerator<T> generadorHash) {
-		this.getFactory().setGeneradorHash( generadorHash );
+	public void setHashValidator(IHashGenerator<S> hashValidator) {
+		this.getFactory().setHashValidator( hashValidator );
 		
 	}
 	

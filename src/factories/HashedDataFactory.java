@@ -11,7 +11,7 @@ import models.HashedDataRecuperable;
 public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 	
 	private IDataFactory<T, R> factory;
-	private IHashGenerator<T> hashGenerator;
+	private IHashGenerator<T> hashValidator;
 	
 	public HashedDataFactory( IDataFactory<T, R> factory )
 	{
@@ -20,7 +20,7 @@ public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 
 	@Override
 	public IHashedDataRecuperable<R> createHashedData(JSONObject jsonObject) {		
-		this.getHashGenerator().validate( jsonObject.get("hash").toString() );
+		this.getHashValidator().validate( jsonObject.get("hash").toString() );
 		
 		return new HashedDataRecuperable<R>( getFactory().createData(jsonObject), jsonObject.get("hash").toString() );
 	}
@@ -42,12 +42,12 @@ public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 		this.factory = factory;
 	}
 
-	public IHashGenerator<T> getHashGenerator() {
-		return hashGenerator;
+	public IHashGenerator<T> getHashValidator() {
+		return hashValidator;
 	}
 
-	public void setHashGenerator(IHashGenerator<T> hashGenerator) {
-		this.hashGenerator = hashGenerator;
+	public void setHashValidator(IHashGenerator<T> hashValidator) {
+		this.hashValidator = hashValidator;
 	}
 
 }

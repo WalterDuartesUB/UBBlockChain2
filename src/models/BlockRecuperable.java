@@ -1,21 +1,21 @@
 package models;
 import interfaces.IBlock;
 import interfaces.IBlockData;
-import interfaces.ITimestampedData;
+import interfaces.ITimestampedDataRecuperable;
 
 public class BlockRecuperable<R> extends BlockStoreable implements IBlockData<R>{
-	private ITimestampedData<R> stampedData;
+	private ITimestampedDataRecuperable<R> stampedData;
 	
-	public BlockRecuperable(IBlock block, ITimestampedData<R> iTimestampedData) {
+	public BlockRecuperable(IBlock block, ITimestampedDataRecuperable<R> iTimestampedData) {
 		super(block.previousHash(), block.blockHash());
 		this.setStampedData(iTimestampedData);
 	}
 	
-	private ITimestampedData<R> getStampedData() {
+	private ITimestampedDataRecuperable<R> getStampedData() {
 		return stampedData;
 	}
 
-	private void setStampedData(ITimestampedData<R> stampedData) {
+	private void setStampedData(ITimestampedDataRecuperable<R> stampedData) {
 		this.stampedData = stampedData;
 	}
 

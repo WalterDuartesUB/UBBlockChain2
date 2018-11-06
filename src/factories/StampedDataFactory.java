@@ -5,7 +5,8 @@ import hashgenerator.IHashGenerator;
 import interfaces.IHashedDataFactory;
 import interfaces.IStampedDataFactory;
 import interfaces.ITimestampedData;
-import models.TimestampedData;
+import interfaces.ITimestampedDataRecuperable;
+import models.TimestampedDataRecuperable;
 
 public class StampedDataFactory<T,R> implements IStampedDataFactory<T, R>{	
 
@@ -15,8 +16,8 @@ public class StampedDataFactory<T,R> implements IStampedDataFactory<T, R>{
 		this.setFactory(factory);
 	}
 	
-	public ITimestampedData<R> createStampedData(JSONObject jsonObject) {
-		return new TimestampedData<R>( getFactory().createHashedData( jsonObject ), Long.parseLong( jsonObject.get("timestamp").toString() ) );
+	public ITimestampedDataRecuperable<R> createStampedData(JSONObject jsonObject) {
+		return new TimestampedDataRecuperable<R>( getFactory().createHashedData( jsonObject ), Long.parseLong( jsonObject.get("timestamp").toString() ) );
 	}
 
 	@SuppressWarnings("unchecked")

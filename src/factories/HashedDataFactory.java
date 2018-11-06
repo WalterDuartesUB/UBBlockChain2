@@ -3,7 +3,6 @@ import org.json.simple.JSONObject;
 
 import hashgenerator.IHashValidator;
 import interfaces.data.IDataFactory;
-import interfaces.hasheddata.IHashedData;
 import interfaces.hasheddata.IHashedDataFactory;
 import interfaces.hasheddata.IHashedDataRecuperable;
 import models.hasheddata.HashedDataRecuperable;
@@ -27,7 +26,7 @@ public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void toJSON(IHashedData<T> hashedData, JSONObject jsonObject) {
+	public void toJSON(IHashedDataRecuperable<T> hashedData, JSONObject jsonObject) {
 		jsonObject.put("hash", hashedData.hashAsString() );
 		
 		getFactory().toJSON( hashedData.data(), jsonObject );

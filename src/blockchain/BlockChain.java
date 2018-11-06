@@ -16,13 +16,14 @@ import interfaces.data.IDataFactory;
 import interfaces.hasheddata.IHashedData;
 import interfaces.timestamp.ITimestampedData;
 import repositories.BlockRepository;
+import repositories.IBlockRepository;
 import tsproviders.ITimestampProvider;
 
 public class BlockChain<T, R> implements IBlockChain<T, R> {
 	private BlockFactory<T, R> blockFactory;
 	private HashGenerator<T> hashGenerator;
 	private ITimestampProvider<T> timestampingProvider;
-	private BlockRepository<IBlock> blockRepository;
+	private IBlockRepository<IBlock> blockRepository;
 
 	public BlockChain(IDataFactory<T, R> dataFactory) {
 		this.setBlockRepository(new BlockRepository<IBlock>());
@@ -81,11 +82,11 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 		this.blockFactory = blockFactory;
 	}
 
-	private BlockRepository<IBlock> getBlockRepository() {
+	private IBlockRepository<IBlock> getBlockRepository() {
 		return blockRepository;
 	}
 
-	private void setBlockRepository(BlockRepository<IBlock> repository) {
+	private void setBlockRepository(IBlockRepository<IBlock> repository) {
 		this.blockRepository = repository;
 	}
 

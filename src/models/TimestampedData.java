@@ -34,9 +34,4 @@ public class TimestampedData<T> implements ITimestampedData<T> {
 		return this.getHashedData();
 	}
 
-	@Override
-	public String toString() {
-		return "TimestampedData [hashedData=" + hashedData + ", timestamp=" + timestamp + "]";
-	}
-
 }

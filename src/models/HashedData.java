@@ -37,11 +37,6 @@ public class HashedData<T> implements IHashedData<T> {
 		return getHashAsString();
 	}
 
-	@Override
-	public String toString() {
-		return "HashedData [data=" + data + "]";
-	}
-
 	public byte[] getHash() {
 		return hash;
 	}

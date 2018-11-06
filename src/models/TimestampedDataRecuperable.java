@@ -1,5 +1,6 @@
 package models;
 
+import interfaces.hasheddata.IHashedDataRecuperable;
 import interfaces.timestamp.ITimestampedDataRecuperable;
 
 public class TimestampedDataRecuperable<T> implements ITimestampedDataRecuperable<T> {

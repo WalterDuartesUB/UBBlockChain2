@@ -3,7 +3,6 @@ package interfaces.hasheddata;
 import org.json.simple.JSONObject;
 
 import hashgenerator.IHashGenerator;
-import models.IHashedDataRecuperable;
 
 public interface IHashedDataFactory<T, R> {
 

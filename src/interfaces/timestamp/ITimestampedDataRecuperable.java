@@ -1,6 +1,6 @@
 package interfaces.timestamp;
 
-import models.IHashedDataRecuperable;
+import interfaces.hasheddata.IHashedDataRecuperable;
 
 public interface ITimestampedDataRecuperable<T> {
 	public long timestamp();

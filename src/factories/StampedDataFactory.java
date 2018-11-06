@@ -3,12 +3,12 @@ import org.json.simple.JSONObject;
 
 import hashgenerator.IHashGenerator;
 import interfaces.hasheddata.IHashedDataFactory;
-import interfaces.timestamp.IStampedDataFactory;
+import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedData;
 import interfaces.timestamp.ITimestampedDataRecuperable;
 import models.TimestampedDataRecuperable;
 
-public class StampedDataFactory<T,R> implements IStampedDataFactory<T, R>{	
+public class StampedDataFactory<T,R> implements ITimestampedDataFactory<T, R>{	
 
 	private IHashedDataFactory<T, R> factory;
 	

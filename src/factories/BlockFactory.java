@@ -8,17 +8,17 @@ import hashgenerator.IHashGenerator;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.block.IBlockFactory;
-import interfaces.timestamp.IStampedDataFactory;
+import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedData;
 import models.BlockStoreable;
 import models.BlockRecuperable;
 
 public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 	
-	private IStampedDataFactory<T,R> factory;
+	private ITimestampedDataFactory<T,R> factory;
 	private IBidirectionalCipher dataCipher;
 	
-	public BlockFactory( IStampedDataFactory<T,R> factory) {
+	public BlockFactory( ITimestampedDataFactory<T,R> factory) {
 		this.setFactory(factory);
 	}
 
@@ -42,11 +42,11 @@ public class BlockFactory<T, R> implements IBlockFactory<IBlockData<R>>{
 		return jsonObject;
 	}
 
-	private IStampedDataFactory<T,R> getFactory() {
+	private ITimestampedDataFactory<T,R> getFactory() {
 		return factory;
 	}
 
-	private void setFactory(IStampedDataFactory<T,R> factory) {
+	private void setFactory(ITimestampedDataFactory<T,R> factory) {
 		this.factory = factory;
 	}
 

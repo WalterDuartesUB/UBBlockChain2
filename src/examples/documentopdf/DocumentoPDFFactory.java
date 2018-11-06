@@ -1,4 +1,4 @@
-package documentopdf;
+package examples.documentopdf;
 import org.json.simple.JSONObject;
 
 import interfaces.data.IDataFactory;

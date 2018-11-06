@@ -1,4 +1,4 @@
-package documentopdf;
+package examples.documentopdf;
 
 import interfaces.data.IDataRecuperable;
 

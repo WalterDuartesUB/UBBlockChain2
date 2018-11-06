@@ -1,4 +1,4 @@
-package documentopdf;
+package examples.documentopdf;
 
 public class DocumentoPDFRecuperable implements IDocumentoPDF{
 	private String pathDocumento;

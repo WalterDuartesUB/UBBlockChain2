@@ -1,3 +1,4 @@
+package examples.documentopdf;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -6,17 +7,14 @@ import org.json.simple.parser.ParseException;
 import blockchain.BlockChain;
 import blockchain.IBlockChain;
 import cipher.BidiriectionalCipherAES;
-import documentopdf.DocumentoPDF;
-import documentopdf.IDocumentoPDF;
-import documentopdf.DocumentoPDFFactory;
 import hashgenerator.HashGeneratorMD5;
 import interfaces.block.IBlockData;
 import tsproviders.TimestampProviderURL;
 
-public class Aplicacion {
+public class AplicacionPDF {
 
 	public static void main(String[] args) throws ParseException {
-		Aplicacion a = new Aplicacion();
+		AplicacionPDF a = new AplicacionPDF();
 
 		a.ejecutar();
 	}

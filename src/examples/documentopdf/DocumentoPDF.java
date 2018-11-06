@@ -1,4 +1,4 @@
-package documentopdf;
+package examples.documentopdf;
 
 import java.io.IOException;
 import java.nio.file.Files;

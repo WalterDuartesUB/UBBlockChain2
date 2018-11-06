@@ -15,13 +15,15 @@ import interfaces.block.IBlockData;
 import interfaces.block.IBlockDataFactory;
 import interfaces.block.IBlockFactory;
 import interfaces.data.IDataFactory;
+import interfaces.data.IDataHasheable;
+import interfaces.data.IDataRecuperable;
 import interfaces.hasheddata.IHashedData;
 import interfaces.repositories.IBlockRepository;
 import interfaces.timestamp.ITimestampedData;
 import interfaces.tsproviders.ITimestampProvider;
 import repositories.BlockRepository;
 
-public class BlockChain<T, R> implements IBlockChain<T, R> {
+public class BlockChain<T extends IDataHasheable, R extends IDataRecuperable> implements IBlockChain<T, R> {
 	private BlockFactory<T, R> blockFactory;
 	private HashGenerator<T> hashGenerator;
 	private ITimestampProvider<T> timestampingProvider;

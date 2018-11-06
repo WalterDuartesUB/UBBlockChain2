@@ -10,7 +10,7 @@ import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.block.IBlockFactory;
 
-public class BlockRepository<T extends IBlock>{
+public class BlockRepository<T extends IBlock> implements IBlockRepository<T>{
 	private Collection<T>	bloques;
 	
 	public BlockRepository()
@@ -18,12 +18,14 @@ public class BlockRepository<T extends IBlock>{
 		this.setBloques( new LinkedList<T>() );
 	}
 	
+	@Override
 	public void add(T dato)
 	{
 		this.getBloques().add( dato );
 	}
-		
-	public <T2, R> void getAll( Collection<IBlockData<R>> bloques, IBlockFactory<T2, R> factory ) throws ParseException
+	
+	@Override
+	public <S, R> void getAll( Collection<IBlockData<R>> bloques, IBlockFactory<S, R> factory ) throws ParseException
 	{		
 		for( T block : this.getBloques())
 			bloques.add( factory.createFromBlock(block) );
@@ -37,6 +39,7 @@ public class BlockRepository<T extends IBlock>{
 		this.bloques = datos;
 	}
 
+	@Override
 	public String getLastBlockHash() {
 		String hash = "";
 		

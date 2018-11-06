@@ -85,8 +85,8 @@ public class BlockChain<T, R> implements IBlockChain<T, R> {
 		return blockRepository;
 	}
 
-	private void setBlockRepository(BlockRepository<IBlock> repositorio) {
-		this.blockRepository = repositorio;
+	private void setBlockRepository(BlockRepository<IBlock> repository) {
+		this.blockRepository = repository;
 	}
 
 	private ITimestampedData<T> createTimestampedData(T data) {

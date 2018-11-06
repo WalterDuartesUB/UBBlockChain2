@@ -15,10 +15,4 @@ public class DocumentoPDFRecuperable implements IDocumentoPDF{
 	public void setPathDocumento(String pathDocumento) {
 		this.pathDocumento = pathDocumento;
 	}
-
-	@Override
-	public String toString() {
-		return "DocumentoPDFRecuperable [pathDocumento=" + this.getPathDocumento() + "]";
-	}
-
 }

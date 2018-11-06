@@ -2,12 +2,12 @@ package interfaces.hasheddata;
 
 import org.json.simple.JSONObject;
 
-import hashgenerator.IHashGenerator;
+import hashgenerator.IHashValidator;
 
 public interface IHashedDataFactory<S, R> {
 
 	public IHashedDataRecuperable<R> createHashedData(JSONObject jsonObject);
 	public void toJSON(IHashedData<S> hashedData, JSONObject jsonObject);
-	public void setHashValidator(IHashGenerator<S> generadorHash);
+	public void setHashValidator(IHashValidator generadorHash);
 
 }

@@ -4,14 +4,14 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import cipher.IBidirectionalCipher;
-import hashgenerator.IHashGenerator;
+import hashgenerator.IHashValidator;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.block.IBlockFactory;
-import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedData;
-import models.BlockStoreable;
+import interfaces.timestamp.ITimestampedDataFactory;
 import models.BlockRecuperable;
+import models.BlockStoreable;
 
 public class BlockFactory<S, R> implements IBlockFactory<S,R>{
 	
@@ -59,7 +59,7 @@ public class BlockFactory<S, R> implements IBlockFactory<S,R>{
 		this.dataCipher = dataCipher;
 	}
 
-	public void setHashValidator(IHashGenerator<S> hashValidator) {
+	public void setHashValidator(IHashValidator hashValidator) {
 		this.getFactory().setHashValidator( hashValidator );
 		
 	}

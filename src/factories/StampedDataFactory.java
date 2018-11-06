@@ -1,10 +1,10 @@
 package factories;
 import org.json.simple.JSONObject;
 
-import hashgenerator.IHashGenerator;
+import hashgenerator.IHashValidator;
 import interfaces.hasheddata.IHashedDataFactory;
-import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedData;
+import interfaces.timestamp.ITimestampedDataFactory;
 import interfaces.timestamp.ITimestampedDataRecuperable;
 import models.TimestampedDataRecuperable;
 
@@ -36,7 +36,7 @@ public class StampedDataFactory<T,R> implements ITimestampedDataFactory<T, R>{
 	}
 
 	@Override
-	public void setHashValidator(IHashGenerator<T> hashValidator) {
+	public void setHashValidator(IHashValidator hashValidator) {
 		this.getFactory().setHashValidator( hashValidator );
 		
 	}

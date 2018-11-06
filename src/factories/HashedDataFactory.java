@@ -1,7 +1,7 @@
 package factories;
 import org.json.simple.JSONObject;
 
-import hashgenerator.IHashGenerator;
+import hashgenerator.IHashValidator;
 import interfaces.data.IDataFactory;
 import interfaces.hasheddata.IHashedData;
 import interfaces.hasheddata.IHashedDataFactory;
@@ -11,7 +11,7 @@ import models.HashedDataRecuperable;
 public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 	
 	private IDataFactory<T, R> factory;
-	private IHashGenerator<T> hashValidator;
+	private IHashValidator 		hashValidator;
 	
 	public HashedDataFactory( IDataFactory<T, R> factory )
 	{
@@ -42,11 +42,12 @@ public class HashedDataFactory<T, R> implements IHashedDataFactory<T, R>{
 		this.factory = factory;
 	}
 
-	public IHashGenerator<T> getHashValidator() {
+	public IHashValidator getHashValidator() {
 		return hashValidator;
 	}
 
-	public void setHashValidator(IHashGenerator<T> hashValidator) {
+	@Override
+	public void setHashValidator(IHashValidator hashValidator) {
 		this.hashValidator = hashValidator;
 	}
 

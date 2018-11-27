@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 import interfaces.block.IBlock;
 import interfaces.block.IBlockData;
 import interfaces.block.IBlockDataFactory;
+import interfaces.filter.IDataFilter;
 import interfaces.repositories.IBlockRepository;
 
 public class BlockRepository<T extends IBlock> implements IBlockRepository<T>{
@@ -58,5 +59,14 @@ public class BlockRepository<T extends IBlock> implements IBlockRepository<T>{
 		}
 		
 		return hash;
+	}
+
+	@Override
+	public <R> void getAll(Collection<IBlockData<R>> bloques, IBlockDataFactory<R> factory, IDataFilter<R> filter) throws ParseException {
+		for( T block : this.getBloques()) {
+			IBlockData<R> blockData = factory.createFromBlock(block);			
+			if( filter.accept( blockData.data() ) )
+				bloques.add( blockData );
+		}
 	}
 }

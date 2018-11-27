@@ -11,6 +11,7 @@ import cipher.BidiriectionalCipherAES;
 import hashgenerator.HashGeneratorMD5;
 import interfaces.block.IBlockData;
 import interfaces.data.IDataFactory;
+import interfaces.filter.IDataFilter;
 import tsproviders.TimestampProviderURL;
 
 class Persona{
@@ -79,19 +80,46 @@ public class AplicacionAlumno {
 			}
 		} );
 		
+		//Recupero filtrado por nombre
+		Collection<IBlockData<Persona>> personasFiltradasBC = new LinkedList<IBlockData<Persona>>();		
+		blockChain.getAll( personasFiltradasBC, new IDataFactory<Alumno, Persona>() {
+			@Override
+			public Persona createData(JSONObject jsonObject) {
+				return new Persona( jsonObject.get("nombre").toString(), jsonObject.get("apellido").toString());
+			}
+
+			@Override
+			public void toJSON(Alumno data, JSONObject jsonObject) {	
+			}
+		},
+		new IDataFilter<Persona>() {
+			@Override
+			public boolean accept(Persona data) {
+				return data.getNombre().compareToIgnoreCase("Walter")==0;
+			}
+		});		
+		
 		System.out.println("Alumnos(BlockChain):");
 		
 		//Muestro los alumnos de la block chain
 		for( IBlockData<Alumno> alumno : alumnosBC )
 			System.out.println( alumno.data() );
 		
+		System.out.println("Personas(BlockChain):");
 		for( IBlockData<Persona> persona : personasBC )
 			System.out.println( persona.data() );
+		
+		System.out.println("Personas Filtradas por nombre(BlockChain):");
+		for( IBlockData<Persona> persona : personasFiltradasBC )
+			System.out.println( persona.data() );		
 		
 		System.out.println("Alumnos(Original):");
 		//Muestro los alumnos de la coleccion
 		for( Alumno alumno : alumnos )
 			System.out.println(alumno);
+		
+		
+		//Filtro por nombre de persona llamado Walter
 	}
 
 	private static BlockChain<Alumno, Alumno> createBlockChain() {

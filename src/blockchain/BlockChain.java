@@ -17,6 +17,8 @@ import interfaces.block.IBlockFactory;
 import interfaces.data.IDataFactory;
 import interfaces.data.IDataHasheable;
 import interfaces.data.IDataRecuperable;
+import interfaces.filter.DataFilterAcceptAll;
+import interfaces.filter.IDataFilter;
 import interfaces.hasheddata.IHashedData;
 import interfaces.repositories.IBlockRepository;
 import interfaces.timestamp.ITimestampedData;
@@ -48,21 +50,26 @@ public class BlockChain<T extends IDataHasheable, R extends IDataRecuperable> im
 	}
 
 	@Override
-	public void getAll(Collection<IBlockData<R>> bloques) {
-		try {
-			this.getBlockRepository().getAll(bloques, this.blockDataFactory());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	public void getAll(Collection<IBlockData<R>> bloques) {		
+		this.getAll(bloques, this.blockDataFactory(), new DataFilterAcceptAll<R>());		
 	}
-
+	
 	@Override
 	public <R2> void getAll(Collection<IBlockData<R2>> bloques, IDataFactory<T, R2> dataFactory) {
+		this.getAll(bloques, dataFactory, new DataFilterAcceptAll<R2>() );
+	}
+	
+	@Override
+	public <R2> void getAll(Collection<IBlockData<R2>> bloques, IDataFactory<T, R2> factory, IDataFilter<R2> filter) {		
+		this.getAll(bloques, new BlockFactory<T, R2>(new TimestampedDataFactory<T, R2>(new HashedDataFactory<T, R2>(factory, this.hashGenerator)), this.getBlockFactory().getDataCipher()), filter);		
+	}	
+	
+	private <R2>void  getAll(Collection<IBlockData<R2>> bloques, IBlockDataFactory<R2> blockFactory, IDataFilter<R2> filter){
 		try {
-			this.getBlockRepository().getAll(bloques, new BlockFactory<T, R2>(new TimestampedDataFactory<T, R2>(new HashedDataFactory<T, R2>(dataFactory, this.hashGenerator)), this.getBlockFactory().getDataCipher()));
+			this.getBlockRepository().getAll(bloques, blockFactory, filter);
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}			
+		}	
 	}
 	
 	private IBlockFactory<T> blockFactory() {

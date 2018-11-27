@@ -7,6 +7,7 @@ import org.json.simple.parser.ParseException;
 import blockchain.BlockChain;
 import blockchain.IBlockChain;
 import cipher.BidiriectionalCipherAES;
+import examples.documentopdf.action.MainAction;
 import hashgenerator.HashGeneratorMD5;
 import interfaces.block.IBlockData;
 import tsproviders.TimestampProviderURL;
@@ -14,9 +15,12 @@ import tsproviders.TimestampProviderURL;
 public class AplicacionPDF {
 
 	public static void main(String[] args) throws ParseException {
+		MainAction.actionPerformed();
+/*		
 		AplicacionPDF a = new AplicacionPDF();
 
 		a.ejecutar();
+*/		
 	}
 
 	public void ejecutar() throws ParseException {
